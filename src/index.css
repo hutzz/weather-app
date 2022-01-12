@@ -1,0 +1,92 @@
+:root {
+	--temp-font-size: 100px;
+	--low-high-font-size: 15px;
+	--other-font-size: 25px;
+	--primary-font-color: white;
+}
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: rgb(44, 43, 43);
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}
+.pane {
+	position: relative;
+	height: 100vh;
+	background-image: url("extras/graysky.jpg");
+	background-size: cover;
+	margin-left: 15%;
+	margin-right: 15%;
+	justify-content: center;
+	overflow: hidden;
+}
+.pane > div {
+	color: var(--primary-font-color);
+}
+#cur-weather-wrapper {
+	text-align: center;
+}
+#cur-icon {
+	display: block;
+	margin: 0 auto;
+}
+#cur-weather {
+	font-weight: bold;
+}
+#cur-temp {
+	font-size: var(--temp-font-size);
+	font-weight: bold;
+	color: var(--primary-font-color);
+}
+#cur-feelslike {
+	left: 45%;
+	font-size: 25px;
+	font-weight: bold;
+}
+#sun-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+#sun-wrapper > div {
+	padding-top: 3%;
+}
+#cur-sunset {
+	padding-left: 10%;
+}
+#low-high-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#low-high-wrapper > div {
+	font-weight: bold;
+}
+#cur-low {
+	padding-top: 2%;
+	font-size: 15px;
+}
+#cur-high {
+	padding-top: 1%;
+	font-size: 15px;
+}
+#cur-humidity {
+	padding-top: 5%;
+	font-size: 25px;
+}
+#cur-pressure {
+	padding-top: 1%;
+	font-size: 25px;
+}
+#cur-speed {
+	padding-top: 1%;
+	font-size: 25px;
+}
