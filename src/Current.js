@@ -19,8 +19,7 @@ const Current = () => {
 				console.log(error);
 				alert("Could not get coordinates.");
 			},
-			{ enableHighAccuracy: true },
-			{ timeout: 5000 }
+			{ enableHighAccuracy: true }
 		);
 		fetch(
 			`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`
