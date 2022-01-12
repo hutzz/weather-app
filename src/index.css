@@ -22,7 +22,7 @@ code {
 .pane {
 	position: relative;
 	height: 100vh;
-	background-image: url("extras/graysky.jpg");
+	background-image: url("extras/sky.jpg");
 	background-size: cover;
 	margin-left: 15%;
 	margin-right: 15%;

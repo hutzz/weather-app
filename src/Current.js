@@ -87,18 +87,12 @@ const Current = () => {
 				</div>
 				<div id='sun-wrapper'>
 					<div id='cur-sunrise'>
-						<img
-							src={require("./extras/sunrise.png")}
-							alt='Sunrise'
-						/>
+						<img src={require("./extras/rise.png")} alt='Sunrise' />
 						<br />
 						{new Date(sun.sunrise * 1000).toLocaleTimeString()}
 					</div>
 					<div id='cur-sunset'>
-						<img
-							src={require("./extras/sunset.png")}
-							alt='Sunset'
-						/>
+						<img src={require("./extras/set.png")} alt='Sunset' />
 						<br />
 						{new Date(sun.sunset * 1000).toLocaleTimeString()}
 					</div>
