@@ -17,9 +17,7 @@ const Current = () => {
 			},
 			(error) => {
 				console.log(error);
-				alert(
-					"Could not get coordinates. Does your browser support geolocation?"
-				);
+				alert("Could not get coordinates.");
 			},
 			{ enableHighAccuracy: true },
 			{ timeout: 5000 }
