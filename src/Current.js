@@ -1,27 +1,26 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
-const Current = () => {
-	const [lat, setLat] = useState();
-	const [lon, setLon] = useState();
 
+const Current = () => {
 	const [weather, setWeather] = useState({});
 	const [main, setMain] = useState({});
 	const [wind, setWind] = useState({});
 	const [sun, setSun] = useState({});
 
+	const getCoords = async () => {
+		const position = await new Promise((resolve, reject) => {
+			navigator.geolocation.getCurrentPosition(resolve, reject);
+		});
+		return {
+			lat: position.coords.latitude,
+			lon: position.coords.longitude,
+		};
+	};
+
 	useEffect(() => {
 		const currentWeather = async () => {
-			navigator.geolocation.getCurrentPosition(
-				(pos) => {
-					setLat(pos.coords.latitude);
-					setLon(pos.coords.longitude);
-				},
-				(error) => {
-					console.log(error);
-					alert("Could not get coordinates.");
-				},
-				{ enableHighAccuracy: true }
-			);
+			const coords = await getCoords();
+			const { lat, lon } = coords;
 			const response = await fetch(
 				`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`
 			);
@@ -53,7 +52,8 @@ const Current = () => {
 			});
 		};
 		currentWeather();
-	}, [lat, lon]);
+	}, []);
+
 	return (
 		<React.Fragment>
 			<div className='pane'>
