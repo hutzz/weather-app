@@ -9,50 +9,49 @@ const Current = () => {
 	const [wind, setWind] = useState({});
 	const [sun, setSun] = useState({});
 
-	const currentWeather = async () => {
-		navigator.geolocation.getCurrentPosition(
-			(pos) => {
-				setLat(pos.coords.latitude);
-				setLon(pos.coords.longitude);
-			},
-			(error) => {
-				console.log(error);
-				alert("Could not get coordinates.");
-			},
-			{ enableHighAccuracy: true }
-		);
-		const response = await fetch(
-			`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`
-		);
-		const data = await response.json();
-
-		console.log(data);
-		setWeather({
-			id: data.weather[0].id,
-			main: data.weather[0].main,
-			desc: data.weather[0].description,
-			icon: data.weather[0].icon,
-		});
-		setMain({
-			currentTemp: data.main.temp,
-			feelsLike: data.main.feels_like,
-			humidity: data.main.humidity,
-			pressure: data.main.pressure,
-			min: data.main.temp_min,
-			max: data.main.temp_max,
-		});
-		setWind({
-			speed: data.wind.speed,
-			direction: data.wind.deg,
-			gust: data.wind.gust,
-		});
-		setSun({
-			sunrise: data.sys.sunrise,
-			sunset: data.sys.sunset,
-		});
-	};
-
 	useEffect(() => {
+		const currentWeather = async () => {
+			navigator.geolocation.getCurrentPosition(
+				(pos) => {
+					setLat(pos.coords.latitude);
+					setLon(pos.coords.longitude);
+				},
+				(error) => {
+					console.log(error);
+					alert("Could not get coordinates.");
+				},
+				{ enableHighAccuracy: true }
+			);
+			const response = await fetch(
+				`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`
+			);
+			const data = await response.json();
+
+			console.log(data);
+			setWeather({
+				id: data.weather[0].id,
+				main: data.weather[0].main,
+				desc: data.weather[0].description,
+				icon: data.weather[0].icon,
+			});
+			setMain({
+				currentTemp: data.main.temp,
+				feelsLike: data.main.feels_like,
+				humidity: data.main.humidity,
+				pressure: data.main.pressure,
+				min: data.main.temp_min,
+				max: data.main.temp_max,
+			});
+			setWind({
+				speed: data.wind.speed,
+				direction: data.wind.deg,
+				gust: data.wind.gust,
+			});
+			setSun({
+				sunrise: data.sys.sunrise,
+				sunset: data.sys.sunset,
+			});
+		};
 		currentWeather();
 	}, [lat, lon]);
 	return (
