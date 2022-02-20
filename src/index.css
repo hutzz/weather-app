@@ -1,4 +1,5 @@
 :root {
+	/* current weather */
 	--temp-font-size: 100px;
 	--low-high-font-size: 15px;
 	--other-font-size: 25px;
@@ -55,13 +56,27 @@ code {
 #sun-wrapper {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-evenly;
 }
 #sun-wrapper > div {
 	padding-top: 3%;
+	font-weight: bold;
+}
+#cur-sunrise {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 #cur-sunset {
-	padding-left: 10%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.sunimg {
+	width: 48px;
+	height: 48px;
 }
 #low-high-wrapper {
 	display: flex;
