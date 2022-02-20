@@ -80,7 +80,9 @@ const Current = () => {
 							src={require("./extras/rise.png")}
 							alt='Sunrise'
 						/>
-						{new Date(sun.sunrise * 1000).toLocaleTimeString()}
+						{new Date(sun.sunrise * 1000).toLocaleTimeString([], {
+							timeStyle: "short",
+						})}
 					</div>
 					<div id='cur-sunset'>
 						<img
@@ -88,7 +90,9 @@ const Current = () => {
 							src={require("./extras/set.png")}
 							alt='Sunset'
 						/>
-						{new Date(sun.sunset * 1000).toLocaleTimeString()}
+						{new Date(sun.sunset * 1000).toLocaleTimeString([], {
+							timeStyle: "short",
+						})}
 					</div>
 				</div>
 			</div>
