@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import getCoords from "./getCoords";
 import "./index.css";
 
 const Current = () => {
@@ -6,16 +7,6 @@ const Current = () => {
 	const [main, setMain] = useState({});
 	const [wind, setWind] = useState({});
 	const [sun, setSun] = useState({});
-
-	const getCoords = async () => {
-		const position = await new Promise((resolve, reject) => {
-			navigator.geolocation.getCurrentPosition(resolve, reject);
-		});
-		return {
-			lat: position.coords.latitude,
-			lon: position.coords.longitude,
-		};
-	};
 
 	useEffect(() => {
 		const currentWeather = async () => {
@@ -25,8 +16,8 @@ const Current = () => {
 				`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`
 			);
 			const data = await response.json();
-
 			console.log(data);
+
 			setWeather({
 				id: data.weather[0].id,
 				main: data.weather[0].main,
