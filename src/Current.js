@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import getCoords from "./getCoords";
+import Loading from "./Loading";
+import objEmpty from "./objEmpty";
 import "./index.css";
 
 const Current = () => {
@@ -16,8 +18,6 @@ const Current = () => {
 				`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`
 			);
 			const data = await response.json();
-			console.log(data);
-
 			setWeather({
 				id: data.weather[0].id,
 				main: data.weather[0].main,
@@ -44,9 +44,14 @@ const Current = () => {
 		};
 		currentWeather();
 	}, []);
-
+	if (objEmpty(weather) || objEmpty(main) || objEmpty(wind) || objEmpty(sun))
+		return (
+			<>
+				<Loading />
+			</>
+		);
 	return (
-		<React.Fragment>
+		<>
 			<div className='pane'>
 				<div id='cur-weather-wrapper'>
 					<img
@@ -96,7 +101,7 @@ const Current = () => {
 					</div>
 				</div>
 			</div>
-		</React.Fragment>
+		</>
 	);
 };
 export default Current;
