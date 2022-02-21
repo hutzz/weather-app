@@ -115,7 +115,6 @@ const Weather = ({ icon, iconAlt, temp, feelslike, humidity }) => {
 				</div>
 				<div id='sevenday-humidity'>{humidity}% HUMIDITY</div>
 			</div>
-			;
 		</>
 	);
 };
