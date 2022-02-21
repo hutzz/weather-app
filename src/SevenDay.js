@@ -64,19 +64,19 @@ const Day = (props) => {
 		if (day > 6) day -= 7;
 		switch (day) {
 			case 0:
-				return "Sunday";
+				return "SUNDAY";
 			case 1:
-				return "Monday";
+				return "MONDAY";
 			case 2:
-				return "Tuesday";
+				return "TUESDAY";
 			case 3:
-				return "Wednesday";
+				return "WEDNESDAY";
 			case 4:
-				return "Thursday";
+				return "THURSDAY";
 			case 5:
-				return "Friday";
+				return "FRIDAY";
 			case 6:
-				return "Saturday";
+				return "SATURDAY";
 			default:
 				return "";
 		}
