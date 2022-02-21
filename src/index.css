@@ -138,7 +138,7 @@ code {
 	font-size: 24px;
 	color: white;
 	font-weight: bold;
-	font-family: "Oswald";
+	font-family: Arial, Helvetica, sans-serif;
 }
 #days-wrapper {
 	display: flex;
