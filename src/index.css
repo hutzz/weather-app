@@ -19,6 +19,31 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
 }
+
+/* navbar */
+#nav-wrapper {
+	display: flex;
+	justify-content: center;
+	margin-top: 2px;
+}
+#nav-wrapper > button {
+	width: 90px;
+	border-radius: 15px 15px;
+	margin-left: 0.5%;
+	background-color: #5b6a82;
+	color: var(--primary-font-color);
+	font-weight: bold;
+}
+
+/* loading and error screens */
+.filler-pages {
+	height: 100vh;
+	max-width: 100%;
+	background-color: white;
+	color: black;
+	text-align: center;
+}
+
 /* current weather */
 .pane {
 	position: relative;
@@ -105,4 +130,99 @@ code {
 #cur-speed {
 	padding-top: 1%;
 	font-size: 25px;
+}
+
+/* 7-day */
+#dayofweek {
+	margin-top: 4%;
+	font-size: 24px;
+	color: white;
+	font-weight: bold;
+	font-family: "Oswald";
+}
+#days-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	height: 100vh;
+	max-width: 100%;
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-bottom: 1%;
+	background-image: url("extras/sky.jpg");
+	background-size: cover;
+	padding: 1%;
+}
+#pane-wrapper {
+	width: 13.5%;
+	height: 70%;
+	text-align: center;
+	background-color: #0d1a2e;
+	border: 1px solid black;
+	border-radius: 25px;
+}
+#sevenday-weather-wrapper > div {
+	margin-top: 1%;
+}
+#sevenday-temp {
+	font-size: 30px;
+	font-weight: bold;
+	color: white;
+}
+#sevenday-feelslike {
+	font-size: 10px;
+	font-weight: bold;
+	color: white;
+}
+#sevenday-humidity {
+	font-size: 10px;
+	font-weight: bold;
+	color: white;
+}
+#sevenday-temp {
+	margin-bottom: 3%;
+}
+#sevenday-high-low-wrapper {
+	display: flex;
+	justify-content: space-evenly;
+	font-size: 13px;
+	color: white;
+	font-weight: bold;
+	margin-top: 5%;
+}
+.sevenday-high-low-icon {
+	width: 36px;
+	height: 36px;
+}
+#sevenday-wind-wrapper {
+	margin-top: 5%;
+	color: white;
+	font-size: 10px;
+	font-weight: bold;
+}
+#sevenday-sun-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin-top: 10%;
+	font-size: 11px;
+	font-weight: bold;
+	color: white;
+}
+#sevenday-sunrise-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+#sevenday-sunset-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.sevenday-sunimg {
+	width: 36px;
+	height: 36px;
 }
