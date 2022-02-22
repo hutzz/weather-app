@@ -20,11 +20,32 @@ code {
 		monospace;
 }
 
+/* top bar */
+#bar-wrapper {
+	display: flex;
+	flex-direction: row;
+}
+
+/* unit conversion */
+#unit-wrapper {
+	margin-left: 20%;
+	margin-right: 2%;
+}
+.unit-button {
+	border-radius: 15px 15px;
+	background-color: #5b6a82;
+	color: var(--primary-font-color);
+	font-weight: bold;
+}
+
 /* navbar */
 #nav-wrapper {
 	display: flex;
 	justify-content: center;
 	margin-top: 2px;
+	/* for alignment with the unit conversion buttons */
+	width: 50%;
+	margin-left: auto;
 }
 #nav-wrapper > button {
 	width: 90px;
@@ -50,8 +71,9 @@ code {
 	height: 100vh;
 	background-image: url("extras/sky.jpg");
 	background-size: cover;
-	margin-left: 15%;
-	margin-right: 15%;
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-bottom: 1%;
 	justify-content: center;
 	overflow: hidden;
 }
