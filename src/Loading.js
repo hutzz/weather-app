@@ -3,7 +3,7 @@ import React from "react";
 const Loading = () => {
 	return (
 		<>
-			<div class='filler-pages'>
+			<div className='filler-pages'>
 				<h1>Loading...</h1>
 			</div>
 		</>
