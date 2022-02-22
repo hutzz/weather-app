@@ -4,7 +4,7 @@ import Loading from "./Loading";
 import objEmpty from "./objEmpty";
 import "./index.css";
 
-const Current = () => {
+const Current = ({ unit }) => {
 	const [weather, setWeather] = useState({});
 	const [main, setMain] = useState({});
 	const [wind, setWind] = useState({});
@@ -15,7 +15,7 @@ const Current = () => {
 			const coords = await getCoords();
 			const { lat, lon } = coords;
 			const response = await fetch(
-				`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`
+				`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${process.env.REACT_APP_API_KEY}`
 			);
 			const data = await response.json();
 			setWeather({
@@ -43,7 +43,7 @@ const Current = () => {
 			});
 		};
 		currentWeather();
-	}, []);
+	}, [unit]);
 	if (objEmpty(weather) || objEmpty(main) || objEmpty(wind) || objEmpty(sun))
 		return (
 			<>
@@ -61,22 +61,34 @@ const Current = () => {
 					/>
 					<div id='cur-weather'>{weather.main}</div>
 					<div id='cur-temp'>
-						{Math.round(main.currentTemp - 273.15)}°C
+						{Math.round(main.currentTemp) +
+							(unit === "metric" ? "°C" : "°F")}
 					</div>
 					<div id='cur-feelslike'>
-						Feels like {Math.round(main.feelsLike - 273.15)}°C
+						Feels like{" "}
+						{Math.round(main.feelsLike) +
+							(unit === "metric" ? "°C" : "°F")}
 					</div>
 				</div>
 				<div id='low-high-wrapper'>
 					<div id='cur-low'>
-						Low: {Math.round(main.min - 273.15)}°C
+						Low:{" "}
+						{Math.round(main.min) +
+							(unit === "metric" ? "°C" : "°F")}
 					</div>
 					<div id='cur-high'>
-						High: {Math.round(main.max - 273.15)}°C
+						High:{" "}
+						{Math.round(main.max) +
+							(unit === "metric" ? "°C" : "°F")}
 					</div>
 					<div id='cur-humidity'>{main.humidity}% Humidity</div>
 					<div id='cur-pressure'>{main.pressure} hPa</div>
-					<div id='cur-speed'>Wind speed: {wind.speed} m/s</div>
+					<div id='cur-speed'>
+						Wind speed:{" "}
+						{unit === "metric"
+							? Math.round(wind.speed * 3.6) + " km/h"
+							: Math.round(wind.speed) + " mph"}{" "}
+					</div>
 				</div>
 				<div id='sun-wrapper'>
 					<div id='cur-sunrise'>

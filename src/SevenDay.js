@@ -1,23 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import getCoords from "./getCoords";
 import Loading from "./Loading.js";
 import objEmpty from "./objEmpty";
 import "./index.css";
 
-const SevenDay = () => {
+const UnitContext = React.createContext();
+
+const SevenDay = ({ unit }) => {
 	const [apiData, setApiData] = useState({});
+	console.log(unit);
 	useEffect(() => {
 		const getData = async () => {
 			const coords = await getCoords();
 			const { lat, lon } = coords;
-			const response = await fetch(
-				`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${process.env.REACT_APP_API_KEY}`
-			);
+			const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=current,minutely,hourly,alerts&appid=${process.env.REACT_APP_API_KEY}`;
+			const response = await fetch(url);
 			const data = await response.json();
 			setApiData(data);
+			console.log(data);
 		};
 		getData();
-	}, []);
+	}, [unit]);
 	if (objEmpty(apiData))
 		return (
 			<>
@@ -25,7 +28,7 @@ const SevenDay = () => {
 			</>
 		);
 	return (
-		<>
+		<UnitContext.Provider value={unit}>
 			<div id='days-wrapper'>
 				<Day
 					day={apiData.daily[1]}
@@ -56,7 +59,7 @@ const SevenDay = () => {
 					dayOfWeek={new Date().getDay() + 7}
 				/>
 			</div>
-		</>
+		</UnitContext.Provider>
 	);
 };
 const Day = (props) => {
@@ -101,6 +104,7 @@ const Day = (props) => {
 	);
 };
 const Weather = ({ icon, iconAlt, temp, feelslike, humidity }) => {
+	const unitData = useContext(UnitContext);
 	return (
 		<>
 			<div id='sevenday-weather-wrapper'>
@@ -109,9 +113,13 @@ const Weather = ({ icon, iconAlt, temp, feelslike, humidity }) => {
 					src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
 					alt={iconAlt}
 				/>
-				<div id='sevenday-temp'>{Math.round(temp - 273.15)}°C</div>
+				<div id='sevenday-temp'>
+					{Math.round(temp) + (unitData === "metric" ? "°C" : "°F")}
+				</div>
 				<div id='sevenday-feelslike'>
-					FEELS LIKE {Math.round(feelslike - 273.15)}°C
+					FEELS LIKE{" "}
+					{Math.round(feelslike) +
+						(unitData === "metric" ? "°C" : "°F")}
 				</div>
 				<div id='sevenday-humidity'>{humidity}% HUMIDITY</div>
 			</div>
@@ -119,6 +127,7 @@ const Weather = ({ icon, iconAlt, temp, feelslike, humidity }) => {
 	);
 };
 const HL = ({ min, max }) => {
+	const unitData = useContext(UnitContext);
 	return (
 		<>
 			<div id='sevenday-high-low-wrapper'>
@@ -128,7 +137,10 @@ const HL = ({ min, max }) => {
 						src={require("./extras/low.png")}
 						alt='LOW'
 					/>
-					<div id='sevenday-low'>{Math.round(min - 273.15)}°C</div>
+					<div id='sevenday-low'>
+						{Math.round(min) +
+							(unitData === "metric" ? "°C" : "°F")}
+					</div>
 				</div>
 				<div id='sevenday-high-wrapper'>
 					<img
@@ -136,13 +148,17 @@ const HL = ({ min, max }) => {
 						src={require("./extras/high.png")}
 						alt='HIGH'
 					/>
-					<div id='sevenday-high'>{Math.round(max - 273.15)}°C</div>
+					<div id='sevenday-high'>
+						{Math.round(max) +
+							(unitData === "metric" ? "°C" : "°F")}
+					</div>
 				</div>
 			</div>
 		</>
 	);
 };
 const Wind = ({ speed, dir }) => {
+	const unitData = useContext(UnitContext);
 	const windDir = (deg) => {
 		if (deg > 348.75 || deg <= 11.25) return "N";
 		else if (deg > 11.25 && deg <= 33.75) return "NNE";
@@ -171,7 +187,10 @@ const Wind = ({ speed, dir }) => {
 					alt='WIND SPEED'
 				/>
 				<div>
-					{Math.round(speed * 3.6)} km/h {windDir(dir)}
+					{unitData === "metric"
+						? Math.round(speed * 3.6) + " km/h "
+						: Math.round(speed) + " mph "}
+					{windDir(dir)}
 				</div>
 			</div>
 		</>
