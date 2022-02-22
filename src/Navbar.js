@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({ met, imp }) => {
+const Navbar = () => {
 	let navigate = useNavigate();
 	return (
 		<>
@@ -20,8 +20,6 @@ const Navbar = ({ met, imp }) => {
 				>
 					FORECAST
 				</button>
-				<button onClick={(e) => met(e)}>°C</button>
-				<button onClick={(e) => imp(e)}>°F</button>
 			</div>
 		</>
 	);

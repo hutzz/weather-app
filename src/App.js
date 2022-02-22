@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar.js";
+import Units from "./Units.js";
 import Current from "./Current.js";
 import SevenDay from "./SevenDay.js";
 import Error from "./Error.js";
@@ -18,7 +19,10 @@ const App = () => {
 	};
 	return (
 		<Router>
-			<Navbar met={metric} imp={imperial} />
+			<div id='bar-wrapper'>
+				<Navbar />
+				<Units met={metric} imp={imperial} />
+			</div>
 			<Routes>
 				<Route path='/' element={<Current unit={units} />} />
 				<Route path='/sevenday' element={<SevenDay unit={units} />} />
