@@ -113,12 +113,13 @@ code {
 	display: flex;
 	padding-top: 1%;
 	font-size: 15px;
+	margin-left: 2%;
 }
 #cur-high-wrapper {
 	display: flex;
 	padding-top: 1%;
 	font-size: 15px;
-	margin-left: 5%;
+	margin-left: 3%;
 }
 .current-high-low-icon {
 	width: 48px;
