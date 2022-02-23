@@ -100,10 +100,46 @@ code {
 	font-size: 25px;
 	font-weight: bold;
 }
+#low-high-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: 2%;
+}
+#low-high-wrapper > div {
+	font-weight: bold;
+}
+#cur-low-wrapper {
+	display: flex;
+	padding-top: 1%;
+	font-size: 15px;
+}
+#cur-high-wrapper {
+	display: flex;
+	padding-top: 1%;
+	font-size: 15px;
+	margin-left: 5%;
+}
+.current-high-low-icon {
+	width: 48px;
+	height: 48px;
+}
+#cur-humidity {
+	padding-top: 2%;
+	font-size: 25px;
+}
+#cur-pressure {
+	padding-top: 1%;
+	font-size: 25px;
+}
+#cur-speed {
+	padding-top: 2%;
+	font-size: 25px;
+}
 #sun-wrapper {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-evenly;
+	justify-content: center;
 }
 #sun-wrapper > div {
 	padding-top: 3%;
@@ -120,38 +156,11 @@ code {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-left: 10%;
 }
 .sunimg {
 	width: 48px;
 	height: 48px;
-}
-#low-high-wrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-#low-high-wrapper > div {
-	font-weight: bold;
-}
-#cur-low {
-	padding-top: 2%;
-	font-size: 15px;
-}
-#cur-high {
-	padding-top: 1%;
-	font-size: 15px;
-}
-#cur-humidity {
-	padding-top: 5%;
-	font-size: 25px;
-}
-#cur-pressure {
-	padding-top: 1%;
-	font-size: 25px;
-}
-#cur-speed {
-	padding-top: 1%;
-	font-size: 25px;
 }
 
 /* 7-day */
@@ -198,6 +207,11 @@ code {
 	color: white;
 }
 #sevenday-humidity {
+	font-size: 10px;
+	font-weight: bold;
+	color: white;
+}
+#sevenday-pressure {
 	font-size: 10px;
 	font-weight: bold;
 	color: white;
