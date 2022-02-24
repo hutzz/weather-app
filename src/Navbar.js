@@ -15,6 +15,13 @@ const Navbar = () => {
 				</button>
 				<button
 					onClick={() => {
+						navigate("/hourly");
+					}}
+				>
+					HOURLY
+				</button>
+				<button
+					onClick={() => {
 						navigate("/sevenday");
 					}}
 				>

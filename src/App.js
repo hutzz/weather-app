@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./Navbar.js";
 import Units from "./Units.js";
 import Current from "./Current.js";
+import Hourly from "./Hourly.js";
 import SevenDay from "./SevenDay.js";
 import Error from "./Error.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -25,6 +26,7 @@ const App = () => {
 			</div>
 			<Routes>
 				<Route path='/' element={<Current unit={units} />} />
+				<Route path='/hourly' element={<Hourly unit={units} />} />
 				<Route path='/sevenday' element={<SevenDay unit={units} />} />
 				<Route path='*' element={<Error />} />
 			</Routes>
