@@ -164,6 +164,45 @@ code {
 	height: 48px;
 }
 
+/* hourly */
+#hours-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	height: 100vh;
+	max-width: 100%;
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-bottom: 1%;
+	background-image: url("extras/sky.jpg");
+	background-size: cover;
+	padding: 1%;
+}
+#hourly-pane-wrapper {
+	width: 13.5%;
+	height: 50%;
+	text-align: center;
+	background-color: #0d1a2e;
+	border: 1px solid black;
+	border-radius: 25px;
+}
+#multiplier-wrapper {
+	display: flex;
+	width: 94%;
+	margin-top: 11%;
+	justify-content: space-between;
+	position: absolute;
+	align-self: flex-start;
+}
+.hourly-multiplier {
+	border-radius: 15px 15px;
+	width: 75px;
+	background-color: #5b6a82;
+	color: var(--primary-font-color);
+	font-weight: bold;
+}
+
 /* 7-day */
 #dayofweek {
 	margin-top: 4%;
@@ -208,6 +247,11 @@ code {
 	color: white;
 }
 #sevenday-humidity {
+	font-size: 10px;
+	font-weight: bold;
+	color: white;
+}
+#sevenday-pop {
 	font-size: 10px;
 	font-weight: bold;
 	color: white;
