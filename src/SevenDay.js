@@ -112,7 +112,7 @@ const Weather = ({
 						(unitData === "metric" ? "°C" : "°F")}
 				</div>
 				<div id='sevenday-humidity'>{humidity}% HUMIDITY</div>
-				<div id='sevenday-pop'>POP {pop * 100}%</div>
+				<div id='sevenday-pop'>POP {Math.round(pop * 100)}%</div>
 				<div id='sevenday-pressure'>{pressure} hPa</div>
 			</div>
 		</>
