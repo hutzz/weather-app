@@ -183,7 +183,7 @@ code {
 }
 #hourly-pane-wrapper {
 	width: 13.5%;
-	height: 50%;
+	height: 70vh;
 	text-align: center;
 	background-color: #0d1a2e;
 	border: 1px solid black;
@@ -192,7 +192,7 @@ code {
 #multiplier-wrapper {
 	display: flex;
 	width: 94%;
-	margin-top: 22vh;
+	margin-top: 0vh;
 	justify-content: space-between;
 	position: absolute;
 	align-self: flex-start;
@@ -230,7 +230,7 @@ code {
 }
 #pane-wrapper {
 	width: 13.5%;
-	height: 70vh;
+	height: 80vh;
 	text-align: center;
 	background-color: #0d1a2e;
 	border: 1px solid black;
