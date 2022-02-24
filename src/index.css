@@ -76,6 +76,7 @@ code {
 	margin-bottom: 1%;
 	justify-content: center;
 	overflow: hidden;
+	border-radius: 15px 15px;
 }
 .pane > div {
 	color: var(--primary-font-color);
@@ -178,6 +179,7 @@ code {
 	background-image: url("extras/sky.jpg");
 	background-size: cover;
 	padding: 1%;
+	border-radius: 15px 15px;
 }
 #hourly-pane-wrapper {
 	width: 13.5%;
@@ -224,6 +226,7 @@ code {
 	background-image: url("extras/sky.jpg");
 	background-size: cover;
 	padding: 1%;
+	border-radius: 15px 15px;
 }
 #pane-wrapper {
 	width: 13.5%;
