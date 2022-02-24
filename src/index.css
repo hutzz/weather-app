@@ -245,22 +245,22 @@ code {
 	color: white;
 }
 #sevenday-feelslike {
-	font-size: 60%;
+	font-size: 0.5vw;
 	font-weight: bold;
 	color: white;
 }
 #sevenday-humidity {
-	font-size: 60%;
+	font-size: 0.5vw;
 	font-weight: bold;
 	color: white;
 }
 #sevenday-pop {
-	font-size: 60%;
+	font-size: 0.5vw;
 	font-weight: bold;
 	color: white;
 }
 #sevenday-pressure {
-	font-size: 60%;
+	font-size: 0.5vw;
 	font-weight: bold;
 	color: white;
 }
@@ -270,26 +270,23 @@ code {
 #sevenday-high-low-wrapper {
 	display: flex;
 	justify-content: space-evenly;
-	font-size: 13px;
+	font-size: 0.9vw;
 	color: white;
 	font-weight: bold;
 	margin-top: 5%;
 }
 .sevenday-high-low-icon {
-	width: auto;
 	height: auto;
-	max-width: 36px;
-	max-height: 36px;
+	max-width: 75%;
+	max-height: 75%;
 }
 #sevenday-wind-wrapper {
 	margin-top: 5%;
 	color: white;
-	font-size: 60%;
+	font-size: 0.5vw;
 	font-weight: bold;
 }
 #sevenday-wind-icon {
-	width: auto;
-	height: auto;
 	max-width: 48px;
 	max-height: 48px;
 }
@@ -298,7 +295,7 @@ code {
 	flex-direction: row;
 	justify-content: space-evenly;
 	margin-top: 10%;
-	font-size: 65%;
+	font-size: 0.55vw;
 	font-weight: bold;
 	color: white;
 }
