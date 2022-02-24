@@ -276,14 +276,22 @@ code {
 	margin-top: 5%;
 }
 .sevenday-high-low-icon {
-	width: 36px;
-	height: 36px;
+	width: auto;
+	height: auto;
+	max-width: 36px;
+	max-height: 36px;
 }
 #sevenday-wind-wrapper {
 	margin-top: 5%;
 	color: white;
 	font-size: 60%;
 	font-weight: bold;
+}
+#sevenday-wind-icon {
+	width: auto;
+	height: auto;
+	max-width: 48px;
+	max-height: 48px;
 }
 #sevenday-sun-wrapper {
 	display: flex;
@@ -307,6 +315,8 @@ code {
 	align-items: center;
 }
 .sevenday-sunimg {
-	width: 36px;
-	height: 36px;
+	width: auto;
+	height: auto;
+	max-width: 36px;
+	max-height: 36px;
 }
