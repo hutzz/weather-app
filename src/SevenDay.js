@@ -3,6 +3,7 @@ import getCoords from "./getCoords";
 import Loading from "./Loading.js";
 import objEmpty from "./objEmpty";
 import windDir from "./windDir";
+import { days } from "./dt";
 import "./index.css";
 
 const UnitContext = React.createContext();
@@ -16,6 +17,7 @@ const SevenDay = ({ unit }) => {
 			const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=current,minutely,hourly,alerts&appid=${process.env.REACT_APP_API_KEY}`;
 			const response = await fetch(url);
 			const data = await response.json();
+			console.log(data);
 			setApiData(data);
 		};
 		getData();
@@ -62,27 +64,6 @@ const SevenDay = ({ unit }) => {
 	);
 };
 const Day = (props) => {
-	const days = (day) => {
-		if (day > 6) day -= 7;
-		switch (day) {
-			case 0:
-				return "SUNDAY";
-			case 1:
-				return "MONDAY";
-			case 2:
-				return "TUESDAY";
-			case 3:
-				return "WEDNESDAY";
-			case 4:
-				return "THURSDAY";
-			case 5:
-				return "FRIDAY";
-			case 6:
-				return "SATURDAY";
-			default:
-				return "";
-		}
-	};
 	return (
 		<>
 			<div id='pane-wrapper'>
@@ -93,6 +74,7 @@ const Day = (props) => {
 					temp={props.day.temp.day}
 					feelslike={props.day.feels_like.day}
 					humidity={props.day.humidity}
+					pop={props.day.pop}
 					pressure={props.day.pressure}
 				/>
 				<br />
@@ -103,7 +85,15 @@ const Day = (props) => {
 		</>
 	);
 };
-const Weather = ({ icon, iconAlt, temp, feelslike, humidity, pressure }) => {
+const Weather = ({
+	icon,
+	iconAlt,
+	temp,
+	feelslike,
+	humidity,
+	pop,
+	pressure,
+}) => {
 	const unitData = useContext(UnitContext);
 	return (
 		<>
@@ -122,6 +112,7 @@ const Weather = ({ icon, iconAlt, temp, feelslike, humidity, pressure }) => {
 						(unitData === "metric" ? "°C" : "°F")}
 				</div>
 				<div id='sevenday-humidity'>{humidity}% HUMIDITY</div>
+				<div id='sevenday-pop'>POP {pop * 100}%</div>
 				<div id='sevenday-pressure'>{pressure} hPa</div>
 			</div>
 		</>
