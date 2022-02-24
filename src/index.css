@@ -192,7 +192,7 @@ code {
 #multiplier-wrapper {
 	display: flex;
 	width: 94%;
-	margin-top: 11%;
+	margin-top: 22vh;
 	justify-content: space-between;
 	position: absolute;
 	align-self: flex-start;
@@ -239,6 +239,12 @@ code {
 #sevenday-weather-wrapper > div {
 	margin-top: 1%;
 }
+#sevenday-icon {
+	width: 100%;
+	height: auto;
+	max-width: 100px;
+	max-height: 100px;
+}
 #sevenday-temp {
 	font-size: 1.5vw;
 	font-weight: bold;
@@ -276,9 +282,10 @@ code {
 	margin-top: 5%;
 }
 .sevenday-high-low-icon {
+	width: 100%;
 	height: auto;
-	max-width: 75%;
-	max-height: 75%;
+	max-width: 36px;
+	max-height: 36px;
 }
 #sevenday-wind-wrapper {
 	margin-top: 5%;
@@ -287,8 +294,10 @@ code {
 	font-weight: bold;
 }
 #sevenday-wind-icon {
-	max-width: 48px;
-	max-height: 48px;
+	width: 100%;
+	height: auto;
+	max-width: 36px;
+	max-height: 36px;
 }
 #sevenday-sun-wrapper {
 	display: flex;
@@ -312,7 +321,7 @@ code {
 	align-items: center;
 }
 .sevenday-sunimg {
-	width: auto;
+	width: 100%;
 	height: auto;
 	max-width: 36px;
 	max-height: 36px;
