@@ -1,62 +1,40 @@
-import React, { useState, useEffect, useContext } from "react";
-import getCoords from "./getCoords";
-import Loading from "./Loading.js";
-import objEmpty from "./objEmpty";
+import React, { useContext } from "react";
 import windDir from "./windDir";
 import { days } from "./dt";
 import "./index.css";
 
 const UnitContext = React.createContext();
 
-const SevenDay = ({ unit }) => {
-	const [apiData, setApiData] = useState({});
-	useEffect(() => {
-		const getData = async () => {
-			const coords = await getCoords();
-			const { lat, lon } = coords;
-			const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=current,minutely,hourly,alerts&appid=${process.env.REACT_APP_API_KEY}`;
-			const response = await fetch(url);
-			const data = await response.json();
-			console.log(data);
-			setApiData(data);
-		};
-		getData();
-	}, [unit]);
-	if (objEmpty(apiData))
-		return (
-			<>
-				<Loading />
-			</>
-		);
+const SevenDay = ({ unit, weather }) => {
 	return (
 		<UnitContext.Provider value={unit}>
 			<div id='days-wrapper'>
 				<Day
-					day={apiData.daily[1]}
+					day={weather.daily[1]}
 					dayOfWeek={new Date().getDay() + 1}
 				/>
 				<Day
-					day={apiData.daily[2]}
+					day={weather.daily[2]}
 					dayOfWeek={new Date().getDay() + 2}
 				/>
 				<Day
-					day={apiData.daily[3]}
+					day={weather.daily[3]}
 					dayOfWeek={new Date().getDay() + 3}
 				/>
 				<Day
-					day={apiData.daily[4]}
+					day={weather.daily[4]}
 					dayOfWeek={new Date().getDay() + 4}
 				/>
 				<Day
-					day={apiData.daily[5]}
+					day={weather.daily[5]}
 					dayOfWeek={new Date().getDay() + 5}
 				/>
 				<Day
-					day={apiData.daily[6]}
+					day={weather.daily[6]}
 					dayOfWeek={new Date().getDay() + 6}
 				/>
 				<Day
-					day={apiData.daily[7]}
+					day={weather.daily[7]}
 					dayOfWeek={new Date().getDay() + 7}
 				/>
 			</div>

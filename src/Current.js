@@ -1,51 +1,27 @@
-import React, { useState, useEffect, useContext } from "react";
-import getCoords from "./getCoords";
-import Loading from "./Loading";
-import objEmpty from "./objEmpty";
+import React, { useContext } from "react";
 import windDir from "./windDir";
 import "./index.css";
 
 const UnitContext = React.createContext();
 
-const Current = ({ unit }) => {
-	const [weatherData, setWeatherData] = useState({});
-
-	useEffect(() => {
-		const currentWeather = async () => {
-			const coords = await getCoords();
-			const { lat, lon } = coords;
-			const response = await fetch(
-				`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${process.env.REACT_APP_API_KEY}`
-			);
-			const data = await response.json();
-			console.log(data);
-			setWeatherData(data);
-		};
-		currentWeather();
-	}, [unit]);
-	if (objEmpty(weatherData))
-		return (
-			<>
-				<Loading />
-			</>
-		);
+const Current = ({ unit, weather }) => {
 	return (
 		<UnitContext.Provider value={unit}>
 			<div className='pane'>
 				<Main
-					main={weatherData.weather[0].main}
-					desc={weatherData.weather[0].description}
-					icon={weatherData.weather[0].icon}
-					currentTemp={weatherData.main.temp}
-					feelsLike={weatherData.main.feels_like}
-					humidity={weatherData.main.humidity}
-					pressure={weatherData.main.pressure}
-					min={weatherData.main.temp_min}
-					max={weatherData.main.temp_max}
-					speed={weatherData.wind.speed}
-					direction={weatherData.wind.deg}
-					sunrise={weatherData.sys.sunrise}
-					sunset={weatherData.sys.sunset}
+					main={weather.current.weather[0].main}
+					desc={weather.current.weather[0].description}
+					icon={weather.current.weather[0].icon}
+					currentTemp={weather.current.temp}
+					feelsLike={weather.current.feels_like}
+					humidity={weather.current.humidity}
+					pressure={weather.current.pressure}
+					min={weather.daily[0].temp.min}
+					max={weather.daily[0].temp.max}
+					speed={weather.current.wind_speed}
+					direction={weather.current.wind_deg}
+					sunrise={weather.current.sunrise}
+					sunset={weather.current.sunset}
 				/>
 			</div>
 		</UnitContext.Provider>
@@ -66,7 +42,6 @@ const Main = ({
 	sunrise,
 	sunset,
 }) => {
-	// may consider useContext for these instead of prop drilling, but for now this will do
 	return (
 		<>
 			<div id='cur-weather-wrapper'>

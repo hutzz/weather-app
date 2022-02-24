@@ -1,41 +1,17 @@
-import React, { useState, useEffect, useContext } from "react";
-import getCoords from "./getCoords";
-import Loading from "./Loading.js";
-import objEmpty from "./objEmpty";
+import React, { useContext } from "react";
 import windDir from "./windDir";
 import { days, time } from "./dt";
 import "./index.css";
 
 const UnitContext = React.createContext();
 
-const Hourly = ({ unit }) => {
-	const [apiData, setApiData] = useState({});
-	let [multiplier, setMultiplier] = useState(0);
-	useEffect(() => {
-		const getData = async () => {
-			const coords = await getCoords();
-			const { lat, lon } = coords;
-			const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=current,minutely,daily,alerts&appid=${process.env.REACT_APP_API_KEY}`;
-			const response = await fetch(url);
-			const data = await response.json();
-			setApiData(data);
-		};
-		getData();
-	}, [unit, multiplier]);
-	console.log(multiplier);
-	console.log(unit);
+const Hourly = ({ unit, weather, multiplier, setMultiplier }) => {
 	const handlePrev = () => {
 		if (multiplier > 0) setMultiplier(multiplier - 1);
 	};
 	const handleNext = () => {
 		if (multiplier <= 6) setMultiplier(multiplier + 1);
 	};
-	if (objEmpty(apiData))
-		return (
-			<>
-				<Loading />
-			</>
-		);
 	return (
 		<UnitContext.Provider value={unit}>
 			<div id='hours-wrapper'>
@@ -57,12 +33,12 @@ const Hourly = ({ unit }) => {
 						Next
 					</button>
 				</div>
-				<Hour hour={apiData.hourly[0 + 6 * multiplier]} />
-				<Hour hour={apiData.hourly[1 + 6 * multiplier]} />
-				<Hour hour={apiData.hourly[2 + 6 * multiplier]} />
-				<Hour hour={apiData.hourly[3 + 6 * multiplier]} />
-				<Hour hour={apiData.hourly[4 + 6 * multiplier]} />
-				<Hour hour={apiData.hourly[5 + 6 * multiplier]} />
+				<Hour hour={weather.hourly[0 + 6 * multiplier]} />
+				<Hour hour={weather.hourly[1 + 6 * multiplier]} />
+				<Hour hour={weather.hourly[2 + 6 * multiplier]} />
+				<Hour hour={weather.hourly[3 + 6 * multiplier]} />
+				<Hour hour={weather.hourly[4 + 6 * multiplier]} />
+				<Hour hour={weather.hourly[5 + 6 * multiplier]} />
 			</div>
 		</UnitContext.Provider>
 	);
