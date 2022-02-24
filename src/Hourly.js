@@ -61,7 +61,6 @@ const Hour = (props) => {
 					pop={props.hour.pop}
 					pressure={props.hour.pressure}
 				/>
-				<br />
 				<Wind speed={props.hour.wind_speed} dir={props.hour.wind_deg} />
 			</div>
 		</>
