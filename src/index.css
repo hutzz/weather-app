@@ -189,6 +189,11 @@ code {
 	border: 1px solid black;
 	border-radius: 25px;
 }
+@media only screen and (min-height: 500px) {
+	#hourly-pane-wrapper {
+		height: 55vh !important;
+	}
+}
 #multiplier-wrapper {
 	display: flex;
 	width: 94%;
@@ -235,6 +240,11 @@ code {
 	background-color: #0d1a2e;
 	border: 1px solid black;
 	border-radius: 25px;
+}
+@media only screen and (min-height: 800px) {
+	#pane-wrapper {
+		height: 65vh !important;
+	}
 }
 #sevenday-weather-wrapper > div {
 	margin-top: 1%;
