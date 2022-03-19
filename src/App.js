@@ -20,7 +20,7 @@ const App = () => {
 	// refresh data timer
 	setTimeout(() => {
 		setRefresh(!refresh);
-	}, 60000);
+	}, 1800000);
 
 	const metric = (e) => {
 		e.preventDefault();
