@@ -15,6 +15,12 @@ const App = () => {
 	const [weather, setWeather] = useState({});
 	const [units, setUnits] = useState("metric");
 	let [multiplier, setMultiplier] = useState(0);
+	const [refresh, setRefresh] = useState(false);
+
+	setTimeout(() => {
+		setRefresh(!refresh);
+	}, 60000);
+
 	const metric = (e) => {
 		e.preventDefault();
 		setUnits("metric");
@@ -34,7 +40,7 @@ const App = () => {
 			setWeather(data);
 		};
 		getData();
-	}, [units, multiplier]);
+	}, [units, multiplier, refresh]);
 	if (objEmpty(weather))
 		return (
 			<>
