@@ -17,6 +17,7 @@ const App = () => {
 	let [multiplier, setMultiplier] = useState(0);
 	const [refresh, setRefresh] = useState(false);
 
+	// refresh data timer
 	setTimeout(() => {
 		setRefresh(!refresh);
 	}, 60000);
