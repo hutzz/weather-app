@@ -14,7 +14,7 @@ import "./index.css";
 const App = () => {
 	const [weather, setWeather] = useState({});
 	const [units, setUnits] = useState("metric");
-	let [multiplier, setMultiplier] = useState(0);
+	const [multiplier, setMultiplier] = useState(0);
 	const [refresh, setRefresh] = useState(false);
 
 	// refresh data timer
@@ -41,7 +41,7 @@ const App = () => {
 			setWeather(data);
 		};
 		getData();
-	}, [units, multiplier, refresh]);
+	}, [units, refresh]);
 	if (objEmpty(weather))
 		return (
 			<>
