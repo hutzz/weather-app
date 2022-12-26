@@ -6,6 +6,7 @@ import Hourly from "./Hourly.js";
 import SevenDay from "./SevenDay.js";
 import Loading from "./Loading.js";
 import Error from "./Error.js";
+import Map from "./Map";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import objEmpty from "./objEmpty.js";
 import getCoords from "./getCoords.js";
@@ -16,6 +17,8 @@ const App = () => {
 	const [units, setUnits] = useState("metric");
 	const [multiplier, setMultiplier] = useState(0);
 	const [refresh, setRefresh] = useState(false);
+	const [coordinates, setCoordinates] = useState();
+	const [map, setMap] = useState({});
 
 	// refresh data timer
 	setTimeout(() => {
@@ -34,6 +37,7 @@ const App = () => {
 		const getData = async () => {
 			const coords = await getCoords();
 			const { lat, lon } = coords;
+			setCoordinates(coords);
 			const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&exclude=minutely,alerts&appid=${process.env.REACT_APP_API_KEY}`;
 			const response = await fetch(url);
 			const data = await response.json();
@@ -50,17 +54,14 @@ const App = () => {
 		);
 	return (
 		<Router>
-			<div id='bar-wrapper'>
+			<div id="bar-wrapper">
 				<Navbar />
 				<Units met={metric} imp={imperial} />
 			</div>
 			<Routes>
+				<Route path="/" element={<Current unit={units} weather={weather} />} />
 				<Route
-					path='/'
-					element={<Current unit={units} weather={weather} />}
-				/>
-				<Route
-					path='/hourly'
+					path="/hourly"
 					element={
 						<Hourly
 							unit={units}
@@ -71,10 +72,11 @@ const App = () => {
 					}
 				/>
 				<Route
-					path='/sevenday'
+					path="/sevenday"
 					element={<SevenDay unit={units} weather={weather} />}
 				/>
-				<Route path='*' element={<Error />} />
+				<Route path="/map" element={<Map cds={coordinates} />} />
+				<Route path="*" element={<Error />} />
 			</Routes>
 		</Router>
 	);

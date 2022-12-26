@@ -5,28 +5,26 @@ const Navbar = () => {
 	let navigate = useNavigate();
 	return (
 		<>
-			<div id='nav-wrapper'>
+			<div id="nav-wrapper">
 				<button
 					onClick={() => {
 						navigate("/");
-					}}
-				>
+					}}>
 					CURRENT
 				</button>
 				<button
 					onClick={() => {
 						navigate("/hourly");
-					}}
-				>
+					}}>
 					HOURLY
 				</button>
 				<button
 					onClick={() => {
 						navigate("/sevenday");
-					}}
-				>
+					}}>
 					FORECAST
 				</button>
+				<button onClick={() => navigate("/map")}>MAP</button>
 			</div>
 		</>
 	);
